@@ -1,7 +1,7 @@
 {
   "name": "eslint-formatter-html-extended",
   "version": "1.0.2",
-  "description": "Pretty ESLint HTML Formatter Extended from ESLint's Official HTML formatter by JulianLaval combined with Stylish by Sindre Sorhus",
+  "description": "🌹 Beautiful ESLint HTML formatter extended from ESLint's official HTML formatter by JulianLaval combined with Stylish by Sindre Sorhus",
   "main": "src/formatter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,7 +19,9 @@
     "eslint-formatter",
     "eslint-html-formatter",
     "eslint-reporter",
-    "eslint-html-reporter"
+    "eslint-html-reporter",
+    "eslintformatter",
+    "eslintreporter"
   ],
   "author": "Irfan Maulana <github.com/mazipan>",
   "license": "MIT",

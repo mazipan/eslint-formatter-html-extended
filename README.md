@@ -1,6 +1,6 @@
 # eslint-formatter-html-extended
 
-🌹 Pretty ESLint HTML Formatter Extended from ESLint's Official HTML formatter by [JulianLaval](https://github.com/JulianLaval) combined with Stylish by [Sindre Sorhus](https://github.com/sindresorhus)
+🌹 Beautiful ESLint HTML formatter extended from ESLint's official HTML formatter by [JulianLaval](https://github.com/JulianLaval) combined with Stylish by [Sindre Sorhus](https://github.com/sindresorhus)
 
 [![License](https://img.shields.io/github/license/mazipan/eslint-formatter-html-extended.svg?longCache=true)](https://github.com/mazipan/eslint-formatter-html-extended) [![version](https://img.shields.io/npm/v/eslint-formatter-html-extended.svg?maxAge=3600)](https://www.npmjs.com/package/eslint-formatter-html-extended)
 [![downloads](https://img.shields.io/npm/dt/eslint-formatter-html-extended.svg?maxAge=86400)](https://www.npmjs.com/package/eslint-formatter-html-extended) ![minified](https://badgen.net/bundlephobia/minzip/eslint-formatter-html-extended)
