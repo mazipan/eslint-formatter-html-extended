@@ -19,6 +19,22 @@ With this formatter, you can generate HTML as report but still can see output in
 
 ![](screenshoot-stylish.png)
 
+## Installation
+
+```bash
+$ yarn add eslint-formatter-html-extended -D
+# OR
+$ npm i eslint-formatter-html-extended --dev
+```
+
+## Usage
+
+Refer to this [docs](https://eslint.org/docs/user-guide/formatters/), you just need to add parameter `-f nameFormatter -o nameFile`, e.g.:
+
+```bash
+eslint --ext .js . -f node_modules/eslint-formatter-html-extended -o eslint-report.html
+```
+
 ## Development
 
 ```bash
