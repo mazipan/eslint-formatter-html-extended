@@ -1,0 +1,37 @@
+{
+  "name": "eslint-formatter-html-extended",
+  "version": "1.0.0",
+  "description": "Pretty ESLint HTML Formatter Extended from ESLint's Official HTML formatter by JulianLaval",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint --ext .js . -f html -o eslint-report.html",
+    "lint:test": "./node_modules/.bin/eslint --ext .js . -f formatter.js -o eslint-report.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mazipan/eslint-formatter-html-extended.git"
+  },
+  "keywords": [
+    "eslint-formatter",
+    "eslint-html-formatter",
+    "eslint-reporter",
+    "eslint-html-reporter"
+  ],
+  "author": "Irfan Maulana <github.com/mazipan>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mazipan/eslint-formatter-html-extended/issues"
+  },
+  "homepage": "https://github.com/mazipan/eslint-formatter-html-extended#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1"
+  }
+}
