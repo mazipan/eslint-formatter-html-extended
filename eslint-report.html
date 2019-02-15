@@ -16,16 +16,20 @@
             #overview {
                 padding:20px 30px
             }
-            td, th {
+            td{
                 padding:5px 10px
             }
-            h1 {
+            h1, h2, h3, h4, h5 {
                 margin:0
             }
+            .content{
+                margin: 0 auto;
+                width: 90%;
+                max-width: 98.2em;
+            }
             table {
-                margin:30px;
-                width:calc(100% - 60px);
-                max-width:1000px;
+                margin:30px 0;
+                width:100%;
                 border-radius:5px;
                 border:1px solid #ddd;
                 border-spacing:0px;
@@ -34,16 +38,17 @@
                 font-weight:400;
                 font-size:medium;
                 text-align:left;
-                cursor:pointer
+                cursor:pointer;
+                padding:10px
             }
-            td.clr-1, td.clr-2, th span {
+            td.clr-1, td.clr-2, .summary-title {
                 font-weight:700
             }
-            th span {
+            .summary-title {
                 float:right;
                 margin-left:20px
             }
-            th span:after {
+            .summary-title:after {
                 content:"";
                 clear:both;
                 display:block
@@ -78,19 +83,60 @@
             td.clr-2 {
                 color:#b94a48
             }
-            td a {
+            a {
                 color:#3a33d1;
                 text-decoration:none
             }
-            td a:hover {
+            a:hover {
                 color:#272296;
                 text-decoration:underline
+            }
+            .icon {
+                width: 20px;
+                height: 20px;
+                margin-bottom: -5px;
+            }
+            .icon--success{
+                fill:#468847;
+            }
+            .icon--warning{
+                fill:#f0ad4e;
+            }
+            .icon--error{
+                fill:#b94a48;
+            }
+            .toggle{
+                transition: all 0.3s;
+            }
+            .toggle.expand svg{
+                transform: rotate(180deg);
+            }
+            .filter{
+                margin-top: 30px;
+            }
+            .filter-btn{
+                padding: 8px 0;
+                width: 100px;
+                font-size: 14px;
+                font-weight: bold;
+                outline: none;
+                border: 0;
+            }
+            .bg--success{
+                background:#bed4f1;
+            }
+            .bg--warning{
+                background:#fcf8e3;
+            }
+            .bg--error{
+                background:#f2dede;
             }
             .footer{
                 margin: 0 auto;
                 width: 50%;
                 text-align: center;
                 color: #333;
+                font-size: 12px;
             }
         </style>
     </head>
@@ -98,148 +144,493 @@
         <div id="overview" class="bg-2">
             <h1>ESLint Report</h1>
             <div>
-                <span>14 problems (13 errors, 1 warning)</span> - Generated on Fri Feb 15 2019 18:57:37 GMT+0700 (Western Indonesia Time)
+                <h3>36 problems (28 errors, 8 warnings)</h3>
+                <small>Generated on Fri Feb 15 2019 23:33:47 GMT+0700 (Western Indonesia Time)</small>
             </div>
         </div>
-        <table>
-            <tbody>
-                <tr class="bg-2" data-group="f-0">
+        <div class="content">
+            <div class="filter">
+                <button class="filter-btn bg--success" id="filter-all">All</button>
+                <button class="filter-btn bg--warning" id="filter-warning">Warning</button>
+                <button class="filter-btn bg--error" id="filter-error">Error</button>
+            </div>
+            <table>
+                <tbody>
+                    <tr class="block bg-1" data-group="f-0">
     <th colspan="4">
-        [+] /Users/irfanmaulana/Documents/public/open-source/eslint-formatter-html-extended/test-rule.js
-        <span>14 problems (13 errors, 1 warning)</span>
+        <svg class="icon icon--warning" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm19 304h-38.2V207.9H275V352zm-19.1-159.8c-11.3 0-20.5-8.6-20.5-20s9.3-19.9 20.5-19.9c11.4 0 20.7 8.5 20.7 19.9s-9.3 20-20.7 20z"></path></svg>
+        <span class="toggle">
+            <svg class="icon" viewBox="0 0 512 512"><path d="M128 192l128 128 128-128z"></path></svg>
+        </span>
+        <span>
+            eslint-formatter-html-extended/lint-file/test-rule-1.js
+        </span>
+        <span class="summary-title">2 problems (0 errors, 2 warnings)</span>
     </th>
 </tr>
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-0 message">
     <td>1:10</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-1">
+        <svg class="icon icon--warning" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm19 304h-38.2V207.9H275V352zm-19.1-159.8c-11.3 0-20.5-8.6-20.5-20s9.3-19.9 20.5-19.9c11.4 0 20.7 8.5 20.7 19.9s-9.3 20-20.7 20z"></path></svg>
+    </td>
     <td>&#39;addOne&#39; is defined but never used.</td>
     <td>
         <a href="https://eslint.org/docs/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-0 message">
+    <td>5:10</td>
+    <td class="clr-1">
+        <svg class="icon icon--warning" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm19 304h-38.2V207.9H275V352zm-19.1-159.8c-11.3 0-20.5-8.6-20.5-20s9.3-19.9 20.5-19.9c11.4 0 20.7 8.5 20.7 19.9s-9.3 20-20.7 20z"></path></svg>
+    </td>
+    <td>&#39;multiply&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr class="block bg-2" data-group="f-1">
+    <th colspan="4">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+        <span class="toggle">
+            <svg class="icon" viewBox="0 0 512 512"><path d="M128 192l128 128 128-128z"></path></svg>
+        </span>
+        <span>
+            eslint-formatter-html-extended/lint-file/test-rule-2.js
+        </span>
+        <span class="summary-title">3 problems (1 error, 2 warnings)</span>
+    </th>
+</tr>
+<tr style="display:none" class="f-1 message">
+    <td>1:10</td>
+    <td class="clr-1">
+        <svg class="icon icon--warning" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm19 304h-38.2V207.9H275V352zm-19.1-159.8c-11.3 0-20.5-8.6-20.5-20s9.3-19.9 20.5-19.9c11.4 0 20.7 8.5 20.7 19.9s-9.3 20-20.7 20z"></path></svg>
+    </td>
+    <td>&#39;add&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-1 message">
+    <td>5:10</td>
+    <td class="clr-1">
+        <svg class="icon icon--warning" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm19 304h-38.2V207.9H275V352zm-19.1-159.8c-11.3 0-20.5-8.6-20.5-20s9.3-19.9 20.5-19.9c11.4 0 20.7 8.5 20.7 19.9s-9.3 20-20.7 20z"></path></svg>
+    </td>
+    <td>&#39;multiply&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-1 message">
+    <td>8:1</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Too many blank lines at the end of file. Max of 0 allowed.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-multiple-empty-lines" target="_blank" rel="noopener noreferrer">no-multiple-empty-lines</a>
+    </td>
+</tr>
+
+<tr class="block bg-2" data-group="f-2">
+    <th colspan="4">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+        <span class="toggle">
+            <svg class="icon" viewBox="0 0 512 512"><path d="M128 192l128 128 128-128z"></path></svg>
+        </span>
+        <span>
+            eslint-formatter-html-extended/lint-file/test-rule-3.js
+        </span>
+        <span class="summary-title">3 problems (1 error, 2 warnings)</span>
+    </th>
+</tr>
+<tr style="display:none" class="f-2 message">
+    <td>1:10</td>
+    <td class="clr-1">
+        <svg class="icon icon--warning" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm19 304h-38.2V207.9H275V352zm-19.1-159.8c-11.3 0-20.5-8.6-20.5-20s9.3-19.9 20.5-19.9c11.4 0 20.7 8.5 20.7 19.9s-9.3 20-20.7 20z"></path></svg>
+    </td>
+    <td>&#39;add&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-2 message">
+    <td>5:10</td>
+    <td class="clr-1">
+        <svg class="icon icon--warning" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm19 304h-38.2V207.9H275V352zm-19.1-159.8c-11.3 0-20.5-8.6-20.5-20s9.3-19.9 20.5-19.9c11.4 0 20.7 8.5 20.7 19.9s-9.3 20-20.7 20z"></path></svg>
+    </td>
+    <td>&#39;multiply&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-2 message">
+    <td>8:1</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Too many blank lines at the end of file. Max of 0 allowed.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-multiple-empty-lines" target="_blank" rel="noopener noreferrer">no-multiple-empty-lines</a>
+    </td>
+</tr>
+
+<tr class="block bg-0" data-group="f-3">
+    <th colspan="4">
+        <svg class="icon icon--success" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm106.5 150.5L228.8 332.8h-.1c-1.7 1.7-6.3 5.5-11.6 5.5-3.8 0-8.1-2.1-11.7-5.7l-56-56c-1.6-1.6-1.6-4.1 0-5.7l17.8-17.8c.8-.8 1.8-1.2 2.8-1.2 1 0 2 .4 2.8 1.2l44.4 44.4 122-122.9c.8-.8 1.8-1.2 2.8-1.2 1.1 0 2.1.4 2.8 1.2l17.5 18.1c1.8 1.7 1.8 4.2.2 5.8z"></path></svg>
+        <span class="toggle">
+            <svg class="icon" viewBox="0 0 512 512"><path d="M128 192l128 128 128-128z"></path></svg>
+        </span>
+        <span>
+            eslint-formatter-html-extended/lint-file/test-rule-4.js
+        </span>
+        <span class="summary-title">0 problems</span>
+    </th>
+</tr>
+
+<tr class="block bg-2" data-group="f-4">
+    <th colspan="4">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+        <span class="toggle">
+            <svg class="icon" viewBox="0 0 512 512"><path d="M128 192l128 128 128-128z"></path></svg>
+        </span>
+        <span>
+            eslint-formatter-html-extended/lint-file/test-rule-5.js
+        </span>
+        <span class="summary-title">14 problems (13 errors, 1 warning)</span>
+    </th>
+</tr>
+<tr style="display:none" class="f-4 message">
+    <td>1:10</td>
+    <td class="clr-1">
+        <svg class="icon icon--warning" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm19 304h-38.2V207.9H275V352zm-19.1-159.8c-11.3 0-20.5-8.6-20.5-20s9.3-19.9 20.5-19.9c11.4 0 20.7 8.5 20.7 19.9s-9.3 20-20.7 20z"></path></svg>
+    </td>
+    <td>&#39;addOne&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-4 message">
     <td>2:7</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Use the isNaN function to compare with NaN.</td>
     <td>
         <a href="https://eslint.org/docs/rules/use-isnan" target="_blank" rel="noopener noreferrer">use-isnan</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>2:9</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Expected &#39;!==&#39; and instead saw &#39;!=&#39;.</td>
     <td>
         <a href="https://eslint.org/docs/rules/eqeqeq" target="_blank" rel="noopener noreferrer">eqeqeq</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>3:1</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Expected indentation of 4 spaces but found 6.</td>
     <td>
         <a href="https://eslint.org/docs/rules/indent" target="_blank" rel="noopener noreferrer">indent</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>3:14</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Unexpected space before unary operator &#39;++&#39;.</td>
     <td>
         <a href="https://eslint.org/docs/rules/space-unary-ops" target="_blank" rel="noopener noreferrer">space-unary-ops</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>3:14</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Unary operator &#39;++&#39; used.</td>
     <td>
         <a href="https://eslint.org/docs/rules/no-plusplus" target="_blank" rel="noopener noreferrer">no-plusplus</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>3:14</td>
-    <td class="clr-1">Warning</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Assignment to function parameter &#39;i&#39;.</td>
     <td>
         <a href="https://eslint.org/docs/rules/no-param-reassign" target="_blank" rel="noopener noreferrer">no-param-reassign</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>3:18</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Missing semicolon.</td>
     <td>
         <a href="https://eslint.org/docs/rules/semi" target="_blank" rel="noopener noreferrer">semi</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>4:10</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Unnecessary &#39;else&#39; after &#39;return&#39;.</td>
     <td>
         <a href="https://eslint.org/docs/rules/no-else-return" target="_blank" rel="noopener noreferrer">no-else-return</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>5:5</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Unnecessary return statement.</td>
     <td>
         <a href="https://eslint.org/docs/rules/no-useless-return" target="_blank" rel="noopener noreferrer">no-useless-return</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>5:5</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Function &#39;addOne&#39; expected a return value.</td>
     <td>
         <a href="https://eslint.org/docs/rules/consistent-return" target="_blank" rel="noopener noreferrer">consistent-return</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>5:11</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Missing semicolon.</td>
     <td>
         <a href="https://eslint.org/docs/rules/semi" target="_blank" rel="noopener noreferrer">semi</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>7:2</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Unnecessary semicolon.</td>
     <td>
         <a href="https://eslint.org/docs/rules/no-extra-semi" target="_blank" rel="noopener noreferrer">no-extra-semi</a>
     </td>
 </tr>
 
-<tr style="display:none" class="f-0">
+<tr style="display:none" class="f-4 message">
     <td>7:3</td>
-    <td class="clr-2">Error</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
     <td>Newline required at end of file but not found.</td>
     <td>
         <a href="https://eslint.org/docs/rules/eol-last" target="_blank" rel="noopener noreferrer">eol-last</a>
     </td>
 </tr>
 
-            </tbody>
-        </table>
+<tr class="block bg-2" data-group="f-5">
+    <th colspan="4">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+        <span class="toggle">
+            <svg class="icon" viewBox="0 0 512 512"><path d="M128 192l128 128 128-128z"></path></svg>
+        </span>
+        <span>
+            eslint-formatter-html-extended/lint-file/test-rule.js
+        </span>
+        <span class="summary-title">14 problems (13 errors, 1 warning)</span>
+    </th>
+</tr>
+<tr style="display:none" class="f-5 message">
+    <td>1:10</td>
+    <td class="clr-1">
+        <svg class="icon icon--warning" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm19 304h-38.2V207.9H275V352zm-19.1-159.8c-11.3 0-20.5-8.6-20.5-20s9.3-19.9 20.5-19.9c11.4 0 20.7 8.5 20.7 19.9s-9.3 20-20.7 20z"></path></svg>
+    </td>
+    <td>&#39;addOne&#39; is defined but never used.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-unused-vars" target="_blank" rel="noopener noreferrer">no-unused-vars</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>2:7</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Use the isNaN function to compare with NaN.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/use-isnan" target="_blank" rel="noopener noreferrer">use-isnan</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>2:9</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Expected &#39;!==&#39; and instead saw &#39;!=&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/eqeqeq" target="_blank" rel="noopener noreferrer">eqeqeq</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>3:1</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Expected indentation of 4 spaces but found 6.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/indent" target="_blank" rel="noopener noreferrer">indent</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>3:14</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Unexpected space before unary operator &#39;++&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/space-unary-ops" target="_blank" rel="noopener noreferrer">space-unary-ops</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>3:14</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Unary operator &#39;++&#39; used.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-plusplus" target="_blank" rel="noopener noreferrer">no-plusplus</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>3:14</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Assignment to function parameter &#39;i&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-param-reassign" target="_blank" rel="noopener noreferrer">no-param-reassign</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>3:18</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Missing semicolon.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/semi" target="_blank" rel="noopener noreferrer">semi</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>4:10</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Unnecessary &#39;else&#39; after &#39;return&#39;.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-else-return" target="_blank" rel="noopener noreferrer">no-else-return</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>5:5</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Unnecessary return statement.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-useless-return" target="_blank" rel="noopener noreferrer">no-useless-return</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>5:5</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Function &#39;addOne&#39; expected a return value.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/consistent-return" target="_blank" rel="noopener noreferrer">consistent-return</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>5:11</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Missing semicolon.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/semi" target="_blank" rel="noopener noreferrer">semi</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>7:2</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Unnecessary semicolon.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/no-extra-semi" target="_blank" rel="noopener noreferrer">no-extra-semi</a>
+    </td>
+</tr>
+
+<tr style="display:none" class="f-5 message">
+    <td>7:3</td>
+    <td class="clr-2">
+        <svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>
+    </td>
+    <td>Newline required at end of file but not found.</td>
+    <td>
+        <a href="https://eslint.org/docs/rules/eol-last" target="_blank" rel="noopener noreferrer">eol-last</a>
+    </td>
+</tr>
+
+                </tbody>
+            </table>
+        </div>
         <footer class="footer">
             <p>
-            Copyright © 2019 by Irfan Maulana
+            Copyright © 2019 by <a href="https://github.com/mazipan" target="_blank" rel="noopener">Irfan Maulana</a>
             <br>
             Based on ESLint's Official HTML formatter by <a href="https://github.com/JulianLaval" target="_blank" rel="noopener">JulianLaval</a>
             </p>
@@ -250,15 +641,91 @@
         </footer>
         <script type="text/javascript">
             var groups = document.querySelectorAll("tr[data-group]");
-            for (i = 0; i < groups.length; i++) {
-                groups[i].addEventListener("click", function() {
+
+            var attachListener = function (element) {
+                element.addEventListener("click", function() {
                     var inGroup = document.getElementsByClassName(this.getAttribute("data-group"));
-                    this.innerHTML = (this.innerHTML.indexOf("+") > -1) ? this.innerHTML.replace("+", "-") : this.innerHTML.replace("-", "+");
+                    var toggle = this.querySelector('.toggle');
+                    if (toggle.classList.contains('expand')) {
+                        toggle.classList.remove('expand')
+                    } else {
+                        toggle.classList.add('expand')
+                    }
                     for (var j = 0; j < inGroup.length; j++) {
                         inGroup[j].style.display = (inGroup[j].style.display !== "none") ? "none" : "table-row";
                     }
                 });
             }
+
+            for (var i = 0; i < groups.length; i++) {
+                attachListener(groups[i])
+            }
+
+            var btnFilterAll = document.getElementById('filter-all');
+            var btnFilterWarning = document.getElementById('filter-warning');
+            var btnFilterError = document.getElementById('filter-error');
+            var otherGroupSeverity = {
+                0: [0, 1, 2],
+                1: [0, 2],
+                2: [0, 1]
+            }
+
+            function hideAllMessage () {
+                var allMessage = document.querySelectorAll('.message');
+                for (var x = 0; x < allMessage.length; x++) {
+                    allMessage[x].style.display = "none";
+                }
+                var allExpanded = document.querySelectorAll('.toggle.expand');
+                for (var x = 0; x < allExpanded.length; x++) {
+                    allExpanded[x].classList.remove('expand');
+                }
+            }
+
+            function hideBySeverity (severity) {
+                var selectorGroup = "tr.bg-" + severity;
+                var allGroup = document.querySelectorAll(selectorGroup);
+                for (var x = 0; x < allGroup.length; x++) {
+                    allGroup[x].style.display = "none";
+                }
+            }
+
+            function showBySeverity(severity) {
+                var selectorGroup = "tr.bg-" + severity;
+                var allGroup = document.querySelectorAll(selectorGroup);
+                for (var x = 0; x < allGroup.length; x++) {
+                    allGroup[x].style.display = "table-row";
+                }
+            }
+
+            function filterBySeverity(severity) {
+                hideAllMessage()
+                if (severity) {
+                    showBySeverity(severity);
+                    var other = otherGroupSeverity[severity];
+                    for (var x = 0; x < other.length; x++) {
+                        hideBySeverity(other[x])
+                    }
+                } else {
+                    var other = otherGroupSeverity[0];
+                    for (var x = 0; x < other.length; x++) {
+                        showBySeverity(other[x])
+                    }
+                }
+            }
+
+            btnFilterAll.addEventListener('click', function () {
+                filterBySeverity(null)
+            })
+
+            btnFilterWarning.addEventListener('click', function () {
+                filterBySeverity(1)
+            })
+
+            btnFilterError.addEventListener('click', function () {
+                filterBySeverity(2)
+            })
+
         </script>
+
     </body>
 </html>

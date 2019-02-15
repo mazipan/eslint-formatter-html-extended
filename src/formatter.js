@@ -7,6 +7,11 @@ const lodash = require('lodash');
 const fs = require('fs');
 const path = require('path');
 const stylish = require('./stylish');
+const icons = [
+  '<svg class="icon icon--success" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm106.5 150.5L228.8 332.8h-.1c-1.7 1.7-6.3 5.5-11.6 5.5-3.8 0-8.1-2.1-11.7-5.7l-56-56c-1.6-1.6-1.6-4.1 0-5.7l17.8-17.8c.8-.8 1.8-1.2 2.8-1.2 1 0 2 .4 2.8 1.2l44.4 44.4 122-122.9c.8-.8 1.8-1.2 2.8-1.2 1.1 0 2.1.4 2.8 1.2l17.5 18.1c1.8 1.7 1.8 4.2.2 5.8z"></path></svg>',
+  '<svg class="icon icon--warning" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm19 304h-38.2V207.9H275V352zm-19.1-159.8c-11.3 0-20.5-8.6-20.5-20s9.3-19.9 20.5-19.9c11.4 0 20.7 8.5 20.7 19.9s-9.3 20-20.7 20z"></path></svg>',
+  '<svg class="icon icon--error" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z"></path></svg>'
+]
 
 //------------------------------------------------------------------------------
 // Helpers
@@ -21,7 +26,7 @@ const messageTemplate = lodash.template(
 const resultTemplate = lodash.template(
   fs.readFileSync(path.join(__dirname, 'html-template-result.html'), 'utf-8'),
 );
-
+const projectSrc = path.resolve(__dirname).replace('eslint-formatter-html-extended/src', '')
 /**
  * Given a word and a count, append an s if count is not one.
  * @param {string} word A word in its singular form.
@@ -90,6 +95,7 @@ function renderMessages(messages, parentIndex) {
         columnNumber,
         severityNumber: message.severity,
         severityName: message.severity === 1 ? 'Warning' : 'Error',
+        severityIcon: icons[message.severity],
         message: message.message,
         ruleId: message.ruleId,
       });
@@ -103,15 +109,17 @@ function renderMessages(messages, parentIndex) {
  */
 function renderResults(results) {
   return lodash
-    .map(
-      results,
-      (result, index) => resultTemplate({
+    .map(results, (result, index) => {
+      const color = renderColor(result.errorCount, result.warningCount);
+
+      return resultTemplate({
         index,
-        color: renderColor(result.errorCount, result.warningCount),
-        filePath: result.filePath,
+        color,
+        icon: icons[color],
+        filePath: result.filePath.replace(projectSrc, ''),
         summary: renderSummary(result.errorCount, result.warningCount),
-      }) + renderMessages(result.messages, index),
-    )
+      }) + renderMessages(result.messages, index)
+    })
     .join('\n');
 }
 

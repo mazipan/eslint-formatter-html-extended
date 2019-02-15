@@ -16,16 +16,20 @@
             #overview {
                 padding:20px 30px
             }
-            td, th {
+            td{
                 padding:5px 10px
             }
-            h1 {
+            h1, h2, h3, h4, h5 {
                 margin:0
             }
+            .content{
+                margin: 0 auto;
+                width: 90%;
+                max-width: 98.2em;
+            }
             table {
-                margin:30px;
-                width:calc(100% - 60px);
-                max-width:1000px;
+                margin:30px 0;
+                width:100%;
                 border-radius:5px;
                 border:1px solid #ddd;
                 border-spacing:0px;
@@ -34,16 +38,17 @@
                 font-weight:400;
                 font-size:medium;
                 text-align:left;
-                cursor:pointer
+                cursor:pointer;
+                padding:10px
             }
-            td.clr-1, td.clr-2, th span {
+            td.clr-1, td.clr-2, .summary-title {
                 font-weight:700
             }
-            th span {
+            .summary-title {
                 float:right;
                 margin-left:20px
             }
-            th span:after {
+            .summary-title:after {
                 content:"";
                 clear:both;
                 display:block
@@ -78,19 +83,60 @@
             td.clr-2 {
                 color:#b94a48
             }
-            td a {
+            a {
                 color:#3a33d1;
                 text-decoration:none
             }
-            td a:hover {
+            a:hover {
                 color:#272296;
                 text-decoration:underline
+            }
+            .icon {
+                width: 20px;
+                height: 20px;
+                margin-bottom: -5px;
+            }
+            .icon--success{
+                fill:#468847;
+            }
+            .icon--warning{
+                fill:#f0ad4e;
+            }
+            .icon--error{
+                fill:#b94a48;
+            }
+            .toggle{
+                transition: all 0.3s;
+            }
+            .toggle.expand svg{
+                transform: rotate(180deg);
+            }
+            .filter{
+                margin-top: 30px;
+            }
+            .filter-btn{
+                padding: 8px 0;
+                width: 100px;
+                font-size: 14px;
+                font-weight: bold;
+                outline: none;
+                border: 0;
+            }
+            .bg--success{
+                background:#bed4f1;
+            }
+            .bg--warning{
+                background:#fcf8e3;
+            }
+            .bg--error{
+                background:#f2dede;
             }
             .footer{
                 margin: 0 auto;
                 width: 50%;
                 text-align: center;
                 color: #333;
+                font-size: 12px;
             }
         </style>
     </head>
@@ -98,17 +144,25 @@
         <div id="overview" class="bg-<%= reportColor %>">
             <h1>ESLint Report</h1>
             <div>
-                <span><%= reportSummary %></span> - Generated on <%= date %>
+                <h3><%= reportSummary %></h3>
+                <small>Generated on <%= date %></small>
             </div>
         </div>
-        <table>
-            <tbody>
-                <%= results %>
-            </tbody>
-        </table>
+        <div class="content">
+            <div class="filter">
+                <button class="filter-btn bg--success" id="filter-all">All</button>
+                <button class="filter-btn bg--warning" id="filter-warning">Warning</button>
+                <button class="filter-btn bg--error" id="filter-error">Error</button>
+            </div>
+            <table>
+                <tbody>
+                    <%= results %>
+                </tbody>
+            </table>
+        </div>
         <footer class="footer">
             <p>
-            Copyright © 2019 by Irfan Maulana
+            Copyright © 2019 by <a href="https://github.com/mazipan" target="_blank" rel="noopener">Irfan Maulana</a>
             <br>
             Based on ESLint's Official HTML formatter by <a href="https://github.com/JulianLaval" target="_blank" rel="noopener">JulianLaval</a>
             </p>
@@ -119,15 +173,91 @@
         </footer>
         <script type="text/javascript">
             var groups = document.querySelectorAll("tr[data-group]");
-            for (i = 0; i < groups.length; i++) {
-                groups[i].addEventListener("click", function() {
+
+            var attachListener = function (element) {
+                element.addEventListener("click", function() {
                     var inGroup = document.getElementsByClassName(this.getAttribute("data-group"));
-                    this.innerHTML = (this.innerHTML.indexOf("+") > -1) ? this.innerHTML.replace("+", "-") : this.innerHTML.replace("-", "+");
+                    var toggle = this.querySelector('.toggle');
+                    if (toggle.classList.contains('expand')) {
+                        toggle.classList.remove('expand')
+                    } else {
+                        toggle.classList.add('expand')
+                    }
                     for (var j = 0; j < inGroup.length; j++) {
                         inGroup[j].style.display = (inGroup[j].style.display !== "none") ? "none" : "table-row";
                     }
                 });
             }
+
+            for (var i = 0; i < groups.length; i++) {
+                attachListener(groups[i])
+            }
+
+            var btnFilterAll = document.getElementById('filter-all');
+            var btnFilterWarning = document.getElementById('filter-warning');
+            var btnFilterError = document.getElementById('filter-error');
+            var otherGroupSeverity = {
+                0: [0, 1, 2],
+                1: [0, 2],
+                2: [0, 1]
+            }
+
+            function hideAllMessage () {
+                var allMessage = document.querySelectorAll('.message');
+                for (var x = 0; x < allMessage.length; x++) {
+                    allMessage[x].style.display = "none";
+                }
+                var allExpanded = document.querySelectorAll('.toggle.expand');
+                for (var x = 0; x < allExpanded.length; x++) {
+                    allExpanded[x].classList.remove('expand');
+                }
+            }
+
+            function hideBySeverity (severity) {
+                var selectorGroup = "tr.bg-" + severity;
+                var allGroup = document.querySelectorAll(selectorGroup);
+                for (var x = 0; x < allGroup.length; x++) {
+                    allGroup[x].style.display = "none";
+                }
+            }
+
+            function showBySeverity(severity) {
+                var selectorGroup = "tr.bg-" + severity;
+                var allGroup = document.querySelectorAll(selectorGroup);
+                for (var x = 0; x < allGroup.length; x++) {
+                    allGroup[x].style.display = "table-row";
+                }
+            }
+
+            function filterBySeverity(severity) {
+                hideAllMessage()
+                if (severity) {
+                    showBySeverity(severity);
+                    var other = otherGroupSeverity[severity];
+                    for (var x = 0; x < other.length; x++) {
+                        hideBySeverity(other[x])
+                    }
+                } else {
+                    var other = otherGroupSeverity[0];
+                    for (var x = 0; x < other.length; x++) {
+                        showBySeverity(other[x])
+                    }
+                }
+            }
+
+            btnFilterAll.addEventListener('click', function () {
+                filterBySeverity(null)
+            })
+
+            btnFilterWarning.addEventListener('click', function () {
+                filterBySeverity(1)
+            })
+
+            btnFilterError.addEventListener('click', function () {
+                filterBySeverity(2)
+            })
+
         </script>
+
     </body>
 </html>
