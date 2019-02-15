@@ -35,6 +35,12 @@ Refer to this [docs](https://eslint.org/docs/user-guide/formatters/), you just n
 eslint --ext .js . -f node_modules/eslint-formatter-html-extended -o eslint-report.html
 ```
 
+Or with shortcut name
+
+```bash
+eslint --ext .js . -f html-extended -o eslint-report.html
+```
+
 ## Development
 
 ```bash
