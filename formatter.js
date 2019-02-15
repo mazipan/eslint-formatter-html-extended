@@ -7,6 +7,7 @@
 const lodash = require("lodash");
 const fs = require("fs");
 const path = require("path");
+const stylish = require("./stylish");
 
 //------------------------------------------------------------------------------
 // Helpers
@@ -117,6 +118,9 @@ module.exports = function(results) {
         totalErrors += result.errorCount;
         totalWarnings += result.warningCount;
     });
+
+    const a = stylish(results);
+    console.log(a)
 
     return pageTemplate({
         date: new Date(),
