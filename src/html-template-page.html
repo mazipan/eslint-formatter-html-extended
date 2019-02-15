@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>ESLint Report</title>
+        <title>ESLint HTML Report Extended</title>
+        <link rel="icon" href="https://eslint.org/img/favicon.512x512.png">
         <style>
             body {
                 font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -85,6 +86,12 @@
                 color:#272296;
                 text-decoration:underline
             }
+            .footer{
+                margin: 0 auto;
+                width: 50%;
+                text-align: center;
+                color: #333;
+            }
         </style>
     </head>
     <body>
@@ -99,6 +106,17 @@
                 <%= results %>
             </tbody>
         </table>
+        <footer class="footer">
+            <p>
+            Copyright © 2019 by Irfan Maulana
+            <br>
+            Based on ESLint's Official HTML formatter by <a href="https://github.com/JulianLaval" target="_blank" rel="noopener">JulianLaval</a>
+            </p>
+            <p>
+                <a href="https://github.com/mazipan/eslint-formatter-html-extended" target="_blank" rel="noopener"><img src="https://img.shields.io/github/stars/mazipan/eslint-formatter-html-extended.svg?style=social&amp;label=Stars"></a>
+                <a href="https://www.npmjs.com/package/eslint-formatter-html-extended" target="_blank" rel="noopener"><img src="https://img.shields.io/npm/v/eslint-formatter-html-extended.svg?maxAge=60"></a>
+            </p>
+        </footer>
         <script type="text/javascript">
             var groups = document.querySelectorAll("tr[data-group]");
             for (i = 0; i < groups.length; i++) {
