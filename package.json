@@ -1,11 +1,11 @@
 {
   "name": "eslint-formatter-html-extended",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Pretty ESLint HTML Formatter Extended from ESLint's Official HTML formatter by JulianLaval combined with Stylish by Sindre Sorhus",
   "main": "src/formatter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "./node_modules/.bin/eslint --ext .js . -f html -o eslint-report.html",
+    "lint": "./node_modules/.bin/eslint --ext .js ./src --fix",
     "lint:test": "./node_modules/.bin/eslint --ext .js ./test-rule.js -f ./src/formatter.js -o eslint-report.html"
   },
   "repository": {
