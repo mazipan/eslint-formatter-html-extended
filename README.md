@@ -9,6 +9,11 @@
 
 With this formatter, you can generate HTML as report but still can see output in your terminal.
 
+Read the background story:
+
++ [in Bahasa Indonesia](https://www.mazipan.xyz/amp/eslint-formatter-html-extended/?utm_source=readme)
++ [in English](https://www.mazipan.xyz/amp/eslint-formatter-html-extended/en/?utm_source=readme)
+
 ## Output Report
 
 [preview here](http://htmlpreview.github.io/?https://github.com/mazipan/eslint-formatter-html-extended/blob/master/eslint-report.html)
