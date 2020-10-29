@@ -11,8 +11,8 @@ With this formatter, you can generate HTML as report but still can see output in
 
 Read the background story:
 
-+ [in Bahasa Indonesia](https://www.mazipan.xyz/amp/eslint-formatter-html-extended/?utm_source=readme)
-+ [in English](https://www.mazipan.xyz/amp/eslint-formatter-html-extended/en/?utm_source=readme)
++ [in Bahasa Indonesia](https://mazipan.space/eslint-formatter-html-extended/?utm_source=readme)
++ [in English](https://mazipan.space/en/eslint-formatter-html-extended/?utm_source=readme)
 
 ## Output Report
 
